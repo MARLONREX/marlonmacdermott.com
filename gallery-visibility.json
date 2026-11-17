@@ -1,0 +1,53 @@
+{
+  "visible": [
+    "countryside-cafe.html",
+    "climbing-centre-service-buildings.html",
+    "house-competition.html",
+    "maup-1.html",
+    "trace.html",
+    "maup-4.html",
+    "maup-2.html",
+    "maup-3.html",
+    "hawthorns.html",
+    "dry-stone-wall.html",
+    "hazelwood.html",
+    "construction-design-pt2.html"
+  ],
+  "hidden": [
+    "extension-planning.html",
+    "project.html?project=Co-Living%2C%20Byker",
+    "project.html?project=Conygar%20Quarry",
+    "project.html?project=High%20Level%20Bridge",
+    "project.html?project=House%20Retrofit",
+    "vernacular-house.html",
+    "project.html?project=DeRe%20Sunniside",
+    "project.html?project=eVTOLs%20and%20the%20City%20Above",
+    "project.html?project=Graffiti%20and%20the%20Surface",
+    "project.html?project=Motorway-Scale%20Cycle%20Routes",
+    "project.html?project=New%20Towns",
+    "project.html?project=Paving%20for%20Different%20Strides",
+    "project.html?project=Point%20Block%20Modular%20Retrofit",
+    "project.html?project=Roof%20Construction",
+    "project.html?project=Site-Specific%20Trees%20with%20AI",
+    "project.html?project=The%20Psychology%20of%20Freehand%20Drawing",
+    "project.html?project=The%20Supermarket%20High%20Street",
+    "project.html?project=Towers%20in%20the%20Park",
+    "project.html?project=Workshop"
+  ],
+  "dormant": [
+    "vernacular-house.html",
+    "project.html?project=DeRe%20Sunniside",
+    "project.html?project=eVTOLs%20and%20the%20City%20Above",
+    "project.html?project=Graffiti%20and%20the%20Surface",
+    "project.html?project=Motorway-Scale%20Cycle%20Routes",
+    "project.html?project=New%20Towns",
+    "project.html?project=Paving%20for%20Different%20Strides",
+    "project.html?project=Point%20Block%20Modular%20Retrofit",
+    "project.html?project=Roof%20Construction",
+    "project.html?project=Site-Specific%20Trees%20with%20AI",
+    "project.html?project=The%20Psychology%20of%20Freehand%20Drawing",
+    "project.html?project=The%20Supermarket%20High%20Street",
+    "project.html?project=Towers%20in%20the%20Park",
+    "project.html?project=Workshop"
+  ]
+}

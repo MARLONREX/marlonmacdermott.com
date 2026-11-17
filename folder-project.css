@@ -1,0 +1,20 @@
+body.folder-project-page { background:#fff; }
+.folder-project-main { margin-left:250px; min-height:100vh; padding:clamp(48px,7vw,105px) clamp(28px,6vw,100px) 100px; }
+.folder-project-header { margin-bottom:clamp(50px,7vw,95px); }
+.folder-project-header h1 { max-width:1100px; margin:0; font-size:clamp(52px,7vw,112px); font-weight:400; line-height:.9; letter-spacing:-.055em; }
+.folder-project-layout { display:grid; grid-template-columns:minmax(280px,.8fr) minmax(420px,1.35fr); gap:clamp(45px,8vw,130px); align-items:start; }
+.folder-project-copy { position:sticky; top:28px; font-size:clamp(18px,1.55vw,25px); line-height:1.48; white-space:pre-wrap; overflow-wrap:anywhere; }
+.folder-project-copy:empty::before { content:"Add a .txt or .md file to this project’s ‘Body of text’ folder, then refresh this page."; color:#aaa; }
+.folder-project-images { display:flex; flex-direction:column; gap:clamp(22px,4vw,58px); }
+.folder-project-images img { display:block; width:100%; height:auto; background:#eee; }
+.folder-project-images figure { margin:0; }
+.folder-project-images figcaption { margin-top:9px; color:#999; font-size:11px; }
+.folder-image-placeholder { aspect-ratio:4/3; display:grid; place-items:center; background:#f1f1ef; color:#aaa; font-size:12px; letter-spacing:.06em; text-align:center; text-transform:uppercase; }
+.folder-project-back { display:inline-block; margin-top:70px; color:#222; font-size:14px; text-decoration:underline; text-underline-offset:4px; }
+.folder-project-error { color:#9b3e2d; }
+@media (max-width:1200px) { .folder-project-main { margin-left:210px; } }
+@media (max-width:820px) {
+  .folder-project-main { margin-left:150px; padding:40px 20px 70px; }
+  .folder-project-layout { grid-template-columns:1fr; gap:45px; }
+  .folder-project-copy { position:relative; top:auto; }
+}

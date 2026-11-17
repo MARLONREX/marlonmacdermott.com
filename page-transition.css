@@ -1,0 +1,39 @@
+/* Arriving pages emerge from white; gallery departures drift toward the click. */
+html { background:#fff; }
+@keyframes page-arrival { from { opacity:0; } to { opacity:1; } }
+@keyframes gallery-departure {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+body { animation:page-arrival 600ms ease-out; }
+body.gallery-leaving {
+  animation:gallery-departure 300ms cubic-bezier(.3,0,.5,1) forwards;
+  pointer-events:none;
+}
+@media(prefers-reduced-motion:reduce) {
+  body { animation:none; }
+  body.gallery-leaving { animation:none; opacity:0; }
+}
+
+
+
+body.gallery-leaving .is-opening img {
+  animation:clicked-image-zoom 300ms cubic-bezier(.3,0,.5,1) forwards;
+}
+@keyframes clicked-image-zoom {
+  from { transform:scale(1); }
+  to { transform:scale(1.22); }
+}
+body.gallery-leaving .is-opening:hover img {
+  filter:none; opacity:1;
+}
+body.gallery-leaving .is-opening > span { opacity:0; }
+@media(prefers-reduced-motion:reduce) {
+  body.gallery-leaving .is-opening img { animation:none; }
+}
+
+/* Gestures scroll freely; the shared controller settles after input stops. */
+.folder-project-images { scroll-snap-type:none !important; scroll-behavior:auto !important; }
+
+.folder-project-images.single-image { padding-bottom:0 !important; }
+.folder-project-images.single-image > figure { margin-bottom:0 !important; }

@@ -1,0 +1,98 @@
+[
+  {
+    "page": "countryside-cafe.html",
+    "title": "Countryside Café",
+    "institution": "Professional",
+    "year": "2020",
+    "category": "freelance",
+    "provisional": false
+  },
+  {
+    "page": "climbing-centre-service-buildings.html",
+    "title": "Climbing Centre",
+    "institution": "Professional",
+    "year": "2021",
+    "category": "freelance",
+    "provisional": false
+  },
+  {
+    "page": "house-competition.html",
+    "title": "House Competition",
+    "institution": "Weston University",
+    "year": "2021",
+    "category": "weston",
+    "provisional": false
+  },
+  {
+    "page": "maup-1.html",
+    "title": "MAup 1",
+    "institution": "Newcastle University",
+    "year": "2022",
+    "category": "uni",
+    "provisional": false
+  },
+  {
+    "page": "hazelwood.html",
+    "title": "Construction Design pt1",
+    "institution": "Weston University",
+    "year": "2020",
+    "category": "weston",
+    "provisional": false
+  },
+  {
+    "page": "construction-design-pt2.html",
+    "title": "Construction Design pt2",
+    "institution": "Weston University",
+    "year": "2021",
+    "category": "weston",
+    "provisional": false
+  },
+  {
+    "page": "maup-2.html",
+    "title": "MAup 2",
+    "institution": "Newcastle University",
+    "year": "2024",
+    "category": "uni",
+    "provisional": false
+  },
+  {
+    "page": "maup-3.html",
+    "title": "MAup 3",
+    "institution": "Newcastle University",
+    "year": "2025",
+    "category": "uni",
+    "provisional": false
+  },
+  {
+    "page": "maup-4.html",
+    "title": "MAup 4",
+    "institution": "Newcastle University",
+    "year": "2025",
+    "category": "uni",
+    "provisional": false
+  },
+  {
+    "page": "trace.html",
+    "title": "TRACE",
+    "institution": "Concepts",
+    "year": "2026",
+    "category": "imaginary",
+    "provisional": false
+  },
+  {
+    "page": "hawthorns.html",
+    "title": "Hawthorns",
+    "institution": "Professional",
+    "year": "2026",
+    "category": "freelance",
+    "provisional": false
+  },
+  {
+    "page": "dry-stone-wall.html",
+    "title": "Drystone Walling",
+    "institution": "Professional",
+    "year": "2025",
+    "category": "freelance",
+    "provisional": false
+  }
+]

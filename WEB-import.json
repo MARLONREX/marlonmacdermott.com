@@ -1,0 +1,61 @@
+[
+  {
+    "name": "CliffCafe",
+    "page": "countryside-cafe.html",
+    "images": 2
+  },
+  {
+    "name": "Climbing Centre & Service buildings",
+    "page": "climbing-centre-service-buildings.html",
+    "images": 5,
+    "documents": 0
+  },
+  {
+    "name": "Extension Planning",
+    "page": "extension-planning.html",
+    "images": 1,
+    "documents": 6
+  },
+  {
+    "name": "Hawthorns",
+    "page": "hawthorns.html",
+    "images": 0,
+    "documents": 0
+  },
+  {
+    "name": "Hazelwood",
+    "page": "hazelwood.html",
+    "images": 0,
+    "documents": 0
+  },
+  {
+    "name": "House Competition",
+    "page": "house-competition.html",
+    "images": 1,
+    "documents": 0
+  },
+  {
+    "name": "MAup 1",
+    "page": "maup-1.html",
+    "images": 0,
+    "documents": 0
+  },
+  {
+    "name": "MAup 2",
+    "page": "maup-2.html",
+    "images": 6,
+    "documents": 0
+  },
+  {
+    "name": "MAup 3",
+    "page": "maup-3.html",
+    "images": 4,
+    "documents": 0
+  },
+  {
+    "name": "MAup 4",
+    "page": "maup-4.html",
+    "images": 0,
+    "documents": 0
+  }
+]

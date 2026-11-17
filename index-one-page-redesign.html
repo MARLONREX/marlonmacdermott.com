@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The personal architecture and design portfolio of Marlon MacDermott.">
+  <title>Marlon MacDermott — Designer</title>
+  <style>
+    :root { --ink:#202225; --paper:#f4f3ef; --line:rgba(32,34,37,.18); --accent:#d9472b; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Arial,Helvetica,sans-serif; }
+    img { max-width:100%; }
+    .header { position:fixed; inset:0 0 auto 0; z-index:1000; min-height:80px; padding:0 28px; display:flex; align-items:center; gap:32px; background:rgba(244,243,239,.72); border-bottom:1px solid rgba(255,255,255,.65); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+    .logo { color:var(--ink); font-size:24px; text-decoration:none; white-space:nowrap; }
+    .nav-links { margin-left:auto; display:flex; align-items:center; gap:clamp(24px,5vw,72px); }
+    .nav-links a { color:var(--ink); font-size:20px; text-decoration:none; }
+    .nav-links a:hover,.nav-links a:focus-visible { color:var(--accent); }
+    .hamburger { display:none; margin-left:auto; width:42px; padding:8px 0; border:0; background:transparent; cursor:pointer; }
+    .hamburger span { display:block; height:1px; margin:7px 0; background:var(--ink); }
+    .hero { position:relative; min-height:min(88vh,900px); display:flex; align-items:flex-end; padding:120px 5vw 5vw; color:white; background:linear-gradient(180deg,rgba(10,10,10,.04) 25%,rgba(10,10,10,.68) 100%),url('assets/images/quarry-project/CON1.png') center/cover no-repeat; }
+    main { overflow:hidden; }
+    .about { scroll-margin-top:80px; padding:clamp(80px,12vw,180px) 5vw; display:grid; grid-template-columns:minmax(160px,.55fr) minmax(300px,1.45fr); gap:8vw; border-bottom:1px solid var(--line); }
+    .eyebrow { margin:4px 0 0; font-size:14px; letter-spacing:.12em; text-transform:uppercase; }
+    .about-copy { max-width:980px; margin:0; font-size:clamp(27px,3.7vw,58px); line-height:1.08; letter-spacing:-.035em; }
+    .about-detail { grid-column:2; max-width:720px; margin:8px 0 0; font-size:18px; line-height:1.55; }
+    .work { scroll-margin-top:80px; padding:clamp(70px,9vw,130px) 2vw; }
+    .work-heading { padding:0 3vw clamp(38px,6vw,78px); display:flex; align-items:flex-end; justify-content:space-between; gap:28px; }
+    .work-heading h2 { margin:0; font-size:clamp(52px,8vw,116px); font-weight:400; line-height:.9; letter-spacing:-.055em; }
+    .work-heading p { max-width:360px; margin:0; font-size:15px; line-height:1.45; }
+    .masonry { columns:3 340px; column-gap:18px; }
+    .project-card { position:relative; display:block; margin:0 0 18px; break-inside:avoid; overflow:hidden; background:#ddd; color:white; text-decoration:none; }
+    .project-card img { display:block; width:100%; height:auto; transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease; }
+    .project-card::after { content:""; position:absolute; inset:50% 0 0; background:linear-gradient(transparent,rgba(0,0,0,.72)); pointer-events:none; }
+    .project-card:hover img,.project-card:focus-visible img { transform:scale(1.025); filter:saturate(.82); }
+    .card-label { position:absolute; z-index:2; inset:auto 18px 16px; display:flex; justify-content:space-between; align-items:flex-end; gap:16px; }
+    .card-label strong { display:block; font-size:clamp(19px,2vw,30px); font-weight:400; line-height:1; }
+    .card-label small { font-size:12px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; }
+    .contact { scroll-margin-top:80px; min-height:68vh; padding:clamp(85px,12vw,180px) 5vw 54px; display:flex; flex-direction:column; justify-content:space-between; background:var(--ink); color:var(--paper); }
+    .contact h2 { max-width:1200px; margin:0; font-size:clamp(48px,8vw,124px); font-weight:400; line-height:.94; letter-spacing:-.055em; }
+    .contact-row { margin-top:100px; padding-top:24px; display:flex; justify-content:space-between; gap:30px; border-top:1px solid rgba(255,255,255,.24); }
+    .contact-row a { color:inherit; }
+    @media (max-width:760px) {
+      .header { min-height:68px; padding:0 18px; }
+      .logo { font-size:19px; }
+      .hamburger { display:block; }
+      .nav-links { display:none; position:absolute; top:68px; left:0; width:100%; padding:22px 18px; flex-direction:column; align-items:flex-start; gap:20px; background:var(--paper); border-bottom:1px solid var(--line); }
+      .nav-links.show { display:flex; }
+      .hero { min-height:78vh; padding:110px 20px 28px; }
+      .about { grid-template-columns:1fr; gap:30px; padding-inline:20px; }
+      .about-detail { grid-column:1; }
+      .work { padding-inline:12px; }
+      .work-heading { align-items:flex-start; flex-direction:column; padding-inline:8px; }
+      .masonry { columns:2 150px; column-gap:10px; }
+      .project-card { margin-bottom:10px; }
+      .card-label { inset:auto 10px 10px; }
+      .card-label small { display:none; }
+      .contact { padding-inline:20px; }
+      .contact-row { flex-direction:column; }
+    }
+  </style>
+<link rel="stylesheet" href="page-transition.css?v=2">
+<link rel="stylesheet" href="mobile.css?v=1">
+</head>
+<body>
+  <section class="hero" id="top" aria-label="Featured project image"></section>
+  <main>
+    <section class="about" id="about">
+      <p class="eyebrow">About</p>
+      <p class="about-copy">I’m Marlon MacDermott, a designer interested in how architecture, images and spatial ideas can help people understand the possibilities of a place.</p>
+      <p class="about-detail">Based in the North East of England, I work across architectural visualisation, graphic design and early-stage building concepts for rural and urban settings. I translate developing ideas into clear, engaging images that can support conversations with communities, architects, engineers and planning teams.</p>
+    </section>
+    <section class="work" id="work">
+      <div class="work-heading"><h2>Selected work</h2><p>Scroll through the portfolio. Select any image to open the full project and see the work in context.</p></div>
+      <div class="masonry">
+        <a class="project-card" href="pages/PC.html"><img src="WorkPages/oldwebsiteimages/2006A.png" alt="Co-living study in Byker"><span class="card-label"><strong>Co-Living, Byker</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PQ.html"><img src="WorkPages/oldwebsiteimages/C1.jpg" alt="Conygar Quarry climbing centre visualisation"><span class="card-label"><strong>Conygar Quarry</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PN.html"><img src="WorkPages/oldwebsiteimages/za.jpg" alt="Nantes art museum project"><span class="card-label"><strong>Art Museum, Nantes</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PWB.html"><img src="WorkPages/oldwebsiteimages/PWB1.jpg" alt="Urban design and relational mapping"><span class="card-label"><strong>Relational Mapping</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PC.html"><img src="WorkPages/oldwebsiteimages/x1.png" alt="Urban co-living proposal"><span class="card-label"><strong>Urban Co-Living</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PDE.html"><img src="WorkPages/oldwebsiteimages/BEL.1.jpg" alt="Countryside architecture study"><span class="card-label"><strong>Derbyshire</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PQ.html"><img src="WorkPages/oldwebsiteimages/CQ6.jpg" alt="Quarry climbing centre design"><span class="card-label"><strong>Climbing Centre</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PDU.html"><img src="WorkPages/oldwebsiteimages/BIG.jpg" alt="House of the Future design study"><span class="card-label"><strong>House of the Future</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PC.html"><img src="WorkPages/oldwebsiteimages/2006C.png" alt="Community housing visualisation"><span class="card-label"><strong>Community Housing</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PN.html"><img src="WorkPages/oldwebsiteimages/zc.jpg" alt="Architectural facade study"><span class="card-label"><strong>Façade Study</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PWB.html"><img src="WorkPages/oldwebsiteimages/WB3.png" alt="Urban mapping drawing"><span class="card-label"><strong>Urban Mapping</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PQ.html"><img src="WorkPages/oldwebsiteimages/CONYGAR%20QUARRY%20WORKSHOP%20REALISTIC%20ELEVATION.png" alt="Conygar Quarry elevation"><span class="card-label"><strong>Quarry Elevation</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PC.html"><img src="assets/images/city-project/x12.png" alt="City architecture visualisation"><span class="card-label"><strong>Shared City</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PWB.html"><img src="WorkPages/oldwebsiteimages/PWB4.jpg" alt="Spatial relationship study"><span class="card-label"><strong>Spatial Relationships</strong><small>View project →</small></span></a>
+        <a class="project-card" href="pages/PN.html"><img src="WorkPages/oldwebsiteimages/zz.jpg" alt="Architectural project detail"><span class="card-label"><strong>Material &amp; Light</strong><small>View project →</small></span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="contact" id="contact">
+    <h2>Have a place, project or idea in mind? Let’s talk.</h2>
+    <div class="contact-row"><a href="mailto:marlon.direct@hotmail.com">marlon.direct@hotmail.com</a><span>© Marlon MacDermott 2026</span></div>
+  </footer>
+  <script>
+    const hamburger=document.getElementById('hamburger');
+    const navLinks=document.getElementById('nav-links');
+    hamburger.addEventListener('click',()=>{const isOpen=navLinks.classList.toggle('show');hamburger.setAttribute('aria-expanded',String(isOpen));});
+    navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{navLinks.classList.remove('show');hamburger.setAttribute('aria-expanded','false');}));
+  </script>
+<script src="page-navigation.js?v=9"></script>
+</body>
+</html>
+
+
+
+
+

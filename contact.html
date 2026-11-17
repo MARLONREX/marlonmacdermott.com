@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Marlon MacDermott</title>
+<link rel="stylesheet" href="site.css?v=8"><link rel="stylesheet" href="page-transition.css?v=2">
+<style>
+body{background:#fff;color:#3d3d3d}.contact-page{margin-left:250px;min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.contact-email{display:flex;align-items:center;justify-content:center;padding:40px 24px;min-height:100dvh}.contact-email a{font:400 16px/1.6 Arial,Helvetica,sans-serif;color:#3d3d3d;text-decoration:none;overflow-wrap:anywhere}.contact-email a:hover{text-decoration:underline;text-underline-offset:4px}.contact-image{background:white;min-height:100dvh}@media(max-width:1200px){.contact-page{margin-left:210px}}@media(max-width:820px){.contact-page{margin-left:150px}.contact-email a{font-size:14px}}@media(max-width:760px){.contact-page{grid-template-columns:1fr}.contact-email{min-height:60dvh}.contact-image{min-height:40dvh}}
+.contact-image {
+  background-image:url('WorkPages/Contact/portrait-room.jpg');
+  background-repeat:no-repeat; background-position:center;
+  background-size:auto max(148%, calc((100vw - 250px) / 2 * 2.224));
+}
+@media(max-width:1200px) { .contact-image { background-size:auto max(148%, calc((100vw - 210px) / 2 * 2.224)); } }
+@media(max-width:820px) { .contact-image { background-size:auto max(148%, calc((100vw - 150px) / 2 * 2.224)); } }
+@media(max-width:760px) { .contact-image { min-height:85dvh; background-size:auto max(148%, calc((100vw - 150px) * 2.224)); } }
+</style>
+<link rel="stylesheet" href="mobile.css?v=1">
+</head>
+<body class="contact-view">
+<aside class="project-sidebar" aria-label="Portfolio navigation"><a class="sidebar-name" href="index.html">Marlon MacDermott</a><nav class="project-menu"><a class="gallery-link" href="index.html">Projects Gallery</a><a href="about.html">Me</a></nav></aside>
+<main class="contact-page"><section class="contact-email" aria-label="Email"><a href="mailto:marlonmacdermott.direct@gmail.com">marlonmacdermott.direct@gmail.com</a></section><div class="contact-image" role="img" aria-label="Marlon MacDermott seated in a timber-lined room"></div></main>
+<script src="page-navigation.js?v=9"></script>
+<script>
+const portraitFrame = document.querySelector('.contact-image');
+const portraitSource = new Image();
+function frameContactPortrait() {
+  if (!portraitSource.naturalWidth) return;
+  const width = portraitFrame.clientWidth, height = portraitFrame.clientHeight;
+  // Frame the actual photograph between its embedded black bands, aligned at its bottom.
+  const photoTop = 0;
+  const photoBottom = portraitSource.naturalHeight;
+  const scale = Math.max(width / portraitSource.naturalWidth, height / (photoBottom-photoTop));
+  portraitFrame.style.backgroundSize = `${portraitSource.naturalWidth*scale}px ${portraitSource.naturalHeight*scale}px`;
+  portraitFrame.style.backgroundPosition = `center ${height-photoBottom*scale}px`;
+}
+portraitSource.onload = frameContactPortrait;
+portraitSource.src = 'WorkPages/Contact/portrait-room.jpg';
+new ResizeObserver(frameContactPortrait).observe(portraitFrame);
+</script>
+
+</body></html>
+
+
+
+
+
+

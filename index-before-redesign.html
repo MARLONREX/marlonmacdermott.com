@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="mystyle.css">
+  <title>McDermott Designs</title>
+  <style>
+
+    /* Loading screen container */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      transition: opacity 2s ease;
+      pointer-events: none;
+    }
+    /* McDermott Designs text */
+    #loading-text {
+      font-size: 64px;
+      font-weight: bold;
+      color: red;
+      opacity: 0;
+      transition: opacity 1s ease;
+      font-family: "Arial", sans-serif;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+      cursor: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%23333" /%3E%3C/svg%3E'), auto;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    /* === HEADER === */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 0 20px;
+    }
+
+    /* === WHITE LINE AT BOTTOM === */
+    .header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: white;
+    }
+
+    /* === LOGO === */
+    .logo {
+      font-size: 24px;
+      font-weight: normal;
+      color: #27292B;
+      user-select: none;
+      margin-left: 0;
+    }
+
+    /* === NAV LINKS === */
+    .nav-links {
+      display: flex;
+      gap: 60px;
+      margin-left: auto;
+      margin-right: 80px;
+    }
+
+    .nav-links a {
+      font-size: 24px;
+      font-weight: normal;
+      color: #000;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    /* Responsive dropdown behavior */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.95);
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+        gap: 20px;
+        z-index: 1001;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links a {
+        font-size: 20px;
+        padding: 10px 20px;
+        text-align: right;
+        color: #000;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .header {
+        justify-content: space-between;
+      }
+    }
+
+    .Title {
+      font-size: 30px;
+      margin-left: 40px;
+      font-weight: normal;
+      margin-top: 80px;
+      color: #27292B;
+    }
+
+    .subgraph {
+      margin-left: 840px;
+      margin-right: 50px;
+      font-size: 40px;
+      font-weight: normal;
+    }
+
+    .grey-box {
+      width: 100vw;
+      height: 800px;
+      background-image: url('CON1.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #f0f0f0;
+      opacity: 1;
+      position: relative;
+      z-index: 0;
+    }
+
+    .grey-box.visible {
+      opacity: 1;
+    }
+
+    .grey-box:hover {
+      box-shadow: 0 0 15px #D3D3D3;
+    }
+
+    .background-city3 {
+      background-image: url('CITY3.png');
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center top;
+      position: absolute;
+      top: 1050px;
+      left: 0;
+      width: 100%;
+      height: auto;
+      min-height: 1600px;
+      z-index: -1;
+      opacity: 0.1;
+    }
+
+    .featured-text {
+      font-size: 60px;
+      color: #27292B;
+      margin-left: 60px;
+      margin-top: 30px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .sticky {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      width: 7%;
+      background: white;
+      padding: 10px 40px;
+      box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .footer-text {
+      font-size: 28px;
+      font-family: sans-serif;
+      color: white;
+      font-weight: bold;
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      opacity: 0.8;
+    }
+
+    .section-heading {
+      font-size: 40px;
+      font-family: sans-serif;
+      color: #27292B;
+      margin-left: 60px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      scroll-margin-top: 80px;
+    }
+
+    /* About paragraph: align with Work heading */
+    .about-text {
+      margin-left: 60px;
+      margin-right: 60px;
+    }
+
+    /* Spacer between About and Work (4x bigger) */
+    .about-to-work-space {
+      height: 160px;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .lightbox img {
+      max-width: 80vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(3, auto);
+      gap: 15px 40px;
+      position: absolute;
+      bottom: 30px;
+      right: 200px;
+    }
+
+    .footer-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 5px 10px;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .footer-nav a:hover {
+      background-color: #6b6b6b;
+      box-shadow: 0 0 10px #D3D3D3;
+    }
+
+    .copyright {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      opacity: 0.8;
+    }
+
+    .section-subtext {
+      font-size: 16px;
+      font-family: sans-serif;
+      color: #27292B;
+      margin-left: 60px;
+      margin-bottom: 30px;
+    }
+
+    /* === Hamburger Button === */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 90px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      height: 1px;
+      background: #27292B;
+      border-radius: 0.75px;
+      width: 100%;
+      display: block;
+    }
+
+    /* === Mobile Nav Menu === */
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #27292B;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+        gap: 20px;
+        z-index: 1001;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
+      }
+
+      .nav-links a {
+        font-size: 20px;
+        padding: 10px 20px;
+        text-align: right;
+        color: #27292B;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+        position: absolute;
+        right: 20px;
+      }
+
+      .header {
+        justify-content: space-between;
+      }
+    }
+
+    #animated-line {
+      font-size: 84px;
+      font-family: sans-serif;
+      font-weight: bold;
+      color: white;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #animated-line span {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    /* =========================
+       WORK SECTION: 3 “Ladders”
+       ========================= */
+
+    .work-ladders {
+      margin: 0 30px;
+      padding: 0;
+    }
+
+    .ladder-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .ladder-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ladder-step {
+      position: relative;
+      border: none;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .ladder-step img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    .ladder-step .hover-label {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 25%;
+      background: rgba(211, 211, 211, 0.92);
+      border-top: 1px solid rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      box-sizing: border-box;
+      transform: translateY(100%);
+      transition: transform 0.25s ease;
+    }
+
+    .ladder-step .hover-label span {
+      font-size: 16px;
+      font-family: sans-serif;
+      color: #27292B;
+      font-weight: normal;
+      user-select: none;
+    }
+
+    .ladder-step:hover .hover-label {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1000px) {
+      .ladder-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 650px) {
+      .ladder-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+<link rel="stylesheet" href="page-transition.css?v=2">
+<link rel="stylesheet" href="mobile.css?v=1">
+</head>
+
+<body>
+
+  <div id="loading-screen">
+    <div id="loading-text">MacDermott</div>
+  </div>
+
+  <div class="grey-box"></div>
+  <div class="background-city3"></div>
+
+  <script>
+    // Lightbox functionality (Work images)
+    document.querySelectorAll('.ladder-step img').forEach(img => {
+      img.addEventListener('click', function() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = this.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    // Close lightbox when clicking outside image
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+      }
+    });
+  </script>
+
+  <br>
+
+  <!-- About Section -->
+  <div id="about" class="section-heading">About</div>
+  <p class="section-subtext about-text">
+    Since 2020, McDermott Designs has grown from simple graphical conceptual design into a growing practice. What began with preliminary renderings for planning
+    applications, highlighting land use and spatial arrangement through building design, has now developed to encompass both graphic and building design for rural and urban settings.
+    Our process guides applicants in imagining their design, creating simple visual representations of their ideas, so that they may better present their ideas to architects or engineers.
+    <br>
+    Based in the North East of England, we have expanded to projects in the South West and the Midlands. In our continued development, we explore urban matrices and emerging
+    urbanism with people centric agonistic design to find the best use of our landscape.
+  </p>
+
+  <div class="about-to-work-space"></div>
+
+  <!-- Work Section -->
+  <div id="work" class="section-heading">Work</div>
+
+  <div class="work-ladders">
+    <div class="ladder-grid">
+
+      <!-- COLUMN 1 -->
+      <div class="ladder-column">
+        <div class="ladder-step">
+          <img src="2006A.png" alt="2006A">
+          <div class="hover-label"><span>Co-living | Byker</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006B.png" alt="2006B">
+          <div class="hover-label"><span>Co-living | Byker</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006C.png" alt="2006C">
+          <div class="hover-label"><span>Co-living | Byker</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="WorkPages/oldwebsiteimages/2006D.png" alt="2006D">
+          <div class="hover-label"><span>Community housing triangle | Byker</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006E.png" alt="2006E">
+          <div class="hover-label"><span>Project title</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006J.jpg" alt="2006J">
+          <div class="hover-label"><span>Project title</span></div>
+        </div>
+      </div>
+
+      <!-- COLUMN 2 -->
+      <div class="ladder-column">
+        <div class="ladder-step">
+          <img src="20061.jpg" alt="20061">
+          <div class="hover-label"><span>Critique & Showcase</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006K.png" alt="2006K">
+          <div class="hover-label"><span>A cascade of ledges render</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006L.png" alt="2006L">
+          <div class="hover-label"><span>Community housing patio render | Byker</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006M.png" alt="2006M">
+          <div class="hover-label"><span>Community housing corridor render</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006N.png" alt="2006N">
+          <div class="hover-label"><span>Project title</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="WorkPages/Co-Living%2C%20Byker/2006O.png" alt="2006O">
+          <div class="hover-label"><span>Project title</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="2006P.jpg" alt="2006P">
+          <div class="hover-label"><span>Project title</span></div>
+        </div>
+      </div>
+
+      <!-- COLUMN 3 -->
+      <div class="ladder-column">
+        <div class="ladder-step">
+          <img src="3008Z.png" alt="3008Z">
+          <div class="hover-label"><span>New build cafe | Charlotte Square</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="3008X.png" alt="3008X">
+          <div class="hover-label"><span>Project title</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="3008A.png" alt="3008A">
+          <div class="hover-label"><span>Charlotte Sq site plan</span></div>
+        </div>
+
+        <div class="ladder-step">
+          <img src="WorkPages/Co-Living%2C%20Byker/2015Z.png" alt="2015Z">
+          <div class="hover-label"><span>Self build community hub | Byker</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Initiatives Section -->
+  <div id="initiatives" class="section-heading">Initiatives</div>
+  <p class="section-subtext">Our initiatives focus on sustainable urban development and community engagement.</p>
+  <br><br>
+
+  <!-- News Section -->
+  <div style="height: 1px; background-color: black; margin: 20px 30px;"></div>
+  <div id="news" class="section-heading">News</div>
+
+  <div style="margin: 20px 60px 20px 60px; font-size: inherit; color: inherit; font-family: inherit;">
+    <p style="font-weight: bold; margin-bottom: 3px;">06/2025 People in New New-Urbanism</p>
+    <p style="margin: 3px 0;">Terraced housing is the future — with shared gardens on the front street,</p>
+    <p style="margin: 3px 0;">segregated cycling routes between homes and shops, and separate vehicular</p>
+    <p style="margin: 3px 0;">access to the rear of the housing. Physically separating people from cars.</p>
+  </div>
+
+  <div style="height: 1px; background-color: black; margin: 20px 30px;"></div>
+
+  <div style="margin: 20px 60px 20px 60px; font-size: inherit; color: inherit; font-family: inherit;">
+    <p style="font-weight: bold; margin-bottom: 3px;">05/2025 Key Quatre Regenerationism</p>
+    <p style="margin: 3px 0;">A new initiative has been organised with local Nailsea businesses and residents</p>
+    <p style="margin: 3px 0;">to petition for the re-opening of the former Key Quatre Gardens in Nailsea town centre.</p>
+    <p style="margin: 3px 0;">This may provide a new sheltered public area, growing in popularity.</p>
+  </div>
+
+  <div style="height: 1px; background-color: black; margin: 20px 30px;"></div>
+
+  <div style="margin: 20px 60px 20px 60px; font-size: inherit; color: inherit; font-family: inherit;">
+    <p style="font-weight: bold; margin-bottom: 3px;">12/2024 AI Will Not Replace Us</p>
+    <p style="margin: 3px 0;">AI can prove useful for those who test their own efficiency and</p>
+    <p style="margin: 3px 0;">commit to running entire projects using AI to accelerate the</p>
+    <p style="margin: 3px 0;">collaborative process during the design phase. We support AI for Good.</p>
+  </div>
+
+  <div style="height: 1px; background-color: black; margin: 20px 30px;"></div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="section-heading">Contact</div>
+  <p class="section-subtext">We're always excited to collaborate on new ideas. Whether you're starting a project, looking for advice, or just want to learn more about what we do — reach out!.</p>
+  <p class="section-subtext">marlon.direct@hotmail.com</p>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightbox-img" src="" alt="Zoomed Image">
+  </div>
+
+  <div class="bottom-grey-box">
+    <div class="copyright">
+      <div id="animated-line">
+        <span>Curators</span>
+        <span>of</span>
+        <span>Shape</span>
+        <span>&</span>
+        <span>Space.</span>
+      </div>
+      <p>Since 2020</p>
+    </div>
+  </div>
+
+  <script>
+    // Loading screen animation
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      const loadingText = document.getElementById('loading-text');
+      const words = document.querySelectorAll('#animated-line span');
+
+      loadingText.style.opacity = '1';
+      setTimeout(() => { loadingText.style.opacity = '0'; }, 2000);
+      setTimeout(() => { loadingScreen.style.opacity = '0'; }, 1000);
+      setTimeout(() => { loadingScreen.remove(); }, 3000);
+
+      setTimeout(() => {
+        words.forEach((word, index) => {
+          setTimeout(() => { word.style.opacity = 1; }, index * 500);
+        });
+      }, 3000);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+
+    // Mobile navigation (FIXED)
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+      const navItems = navLinks.querySelectorAll('a');
+
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+      });
+
+      navItems.forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('show');
+        });
+      });
+    });
+
+    // Sticky header on scroll
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 100) {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+      } else {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+      }
+    });
+  </script>
+<script src="page-navigation.js?v=9"></script>
+</body>
+</html>
+
+
+
+
+
