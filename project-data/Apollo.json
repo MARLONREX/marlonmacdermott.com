@@ -1,0 +1,52 @@
+{
+  "title": "Apollo",
+  "year": "2024",
+  "text": "Designed by Victor Pasmore and completed in 1969, the Apollo Pavilion in Peterlee is a reinforced concrete sculpture and bridge. Its interlocking blocks connect the geometry of the estate’s curving roads and box-shaped houses. As you move around it, the concrete forms seem to rotate and shift, changing the shape you see from each new angle.",
+  "cover": "WorkPages/Apollo/01-covered-passage.jpg",
+  "images": [
+    {
+      "url": "WorkPages/Apollo/01-covered-passage.jpg",
+      "name": "Apollo — covered passage"
+    },
+    {
+      "url": "WorkPages/Apollo/02-concrete-detail.jpg",
+      "name": "Apollo — concrete detail"
+    },
+    {
+      "url": "WorkPages/Apollo/03-pavilion-and-bridge.jpg",
+      "name": "Apollo — pavilion and bridge"
+    },
+    {
+      "url": "WorkPages/Apollo/04-brick-pier.jpg",
+      "name": "Apollo — brick pier"
+    },
+    {
+      "url": "WorkPages/Apollo/05-concrete-column.jpg",
+      "name": "Apollo — concrete column"
+    },
+    {
+      "url": "WorkPages/Apollo/06-cantilever.jpg",
+      "name": "Apollo — cantilever"
+    },
+    {
+      "url": "WorkPages/Apollo/07-view-across-the-water.jpg",
+      "name": "Apollo — view across the water"
+    },
+    {
+      "url": "WorkPages/Apollo/08-pavilion-silhouette.jpg",
+      "name": "Apollo — pavilion silhouette"
+    },
+    {
+      "url": "WorkPages/Apollo/09-brickwork-detail.jpg",
+      "name": "Apollo — brickwork detail"
+    },
+    {
+      "url": "WorkPages/Apollo/10-concrete-and-shadow.jpg",
+      "name": "Apollo — concrete and shadow"
+    },
+    {
+      "url": "WorkPages/Apollo/11-sunset-at-the-pavilion.jpg",
+      "name": "Apollo — sunset at the pavilion"
+    }
+  ]
+}

@@ -85,7 +85,7 @@ async function loadFolderCover(tile) {
     const response = await fetch(`project-data/${encodeURIComponent(projectName)}.json`, { cache:'no-store' });
     if (!response.ok) return;
     const project = await response.json();
-    const cover = project.images[0];
+    const cover = project.cover || project.images[0]?.url;
     if (!cover) return;
 
     let image = tile.querySelector('img');
@@ -93,8 +93,8 @@ async function loadFolderCover(tile) {
       image = document.createElement('img');
       tile.insertBefore(image, tile.firstChild);
     }
-    image.src = cover.url;
-    image.alt = `${projectName} project cover`;
+    image.src = cover;
+    image.alt = `${project.title || projectName} project cover`;
     tile.classList.remove('concept-placeholder');
   } catch (error) {
     // Keep the existing cover or placeholder if the private folder reader is unavailable.

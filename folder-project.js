@@ -31,6 +31,14 @@ async function loadFolderProject() {
     const response = await fetch(`project-data/${encodeURIComponent(folderProjectName)}.json`, { cache:'no-store' });
     if (!response.ok) throw new Error('Project folder not found');
     const project = await response.json();
+    const title = project.title || folderProjectName;
+    titleElement.textContent = title;
+    document.title = title + ' — Marlon MacDermott';
+    if (project.year) {
+      const year = document.createElement('p');
+      year.textContent = project.year;
+      titleElement.after(year);
+    }
     copyElement.textContent = project.text.replace(/^Category:[^\r\n]*(?:\r?\n)*/gmi, '').trim();
 
     if (project.images.length) {
