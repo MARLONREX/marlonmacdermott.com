@@ -45,10 +45,10 @@ async function readProject(directory) {
   return { directory, title, year, category, description, images, cover: url(coverFile) };
 }
 
-async function insertCards(file, cards) {
+async function insertCards(file, cards, marker = 'Drop-in projects') {
   const html = await readFile(file, 'utf8');
-  const start = '<!-- Drop-in projects start -->';
-  const end = '<!-- Drop-in projects end -->';
+  const start = '<!-- ' + marker + ' start -->';
+  const end = '<!-- ' + marker + ' end -->';
   const from = html.indexOf(start);
   const to = html.indexOf(end);
   if (from < 0 || to < from) throw new Error('Missing drop-in project markers in ' + file);
@@ -61,6 +61,7 @@ const directories = (await readdir('WorkPages', { withFileTypes: true })).filter
 const projects = (await Promise.all(directories.map(entry => readProject(entry.name)))).filter(Boolean)
   .sort((a, b) => b.year.localeCompare(a.year) || a.title.localeCompare(b.title, 'en'));
 const tiles = [];
+const apolloTiles = [];
 const cards = [];
 await mkdir('project-data', { recursive: true });
 for (const project of projects) {
@@ -68,7 +69,8 @@ for (const project of projects) {
   const href = 'project.html?project=' + encodeURIComponent(directory);
   const label = escapeHtml(title);
   const image = '<img src="' + escapeHtml(cover) + '" alt="' + label + ' cover">';
-  tiles.push('<a class="reference-tile" data-category="' + categories.get(category) +
+  const galleryTiles = directory === 'Apollo' ? apolloTiles : tiles;
+  galleryTiles.push('<a class="reference-tile" data-category="' + categories.get(category) +
     '" href="' + escapeHtml(href) + '">' + image + '<span class="tile-details"><span class="tile-title">' + label +
     '</span><span class="tile-institution">+ ' + escapeHtml(category) +
     '</span><span class="tile-year">' + year + '</span></span></a>');
@@ -77,5 +79,6 @@ for (const project of projects) {
   await writeFile(join('project-data', directory + '.json'), JSON.stringify({ title, year, text: description, cover, images }, null, 2) + '\n');
 }
 await insertCards('index.html', tiles);
+await insertCards('index.html', apolloTiles, 'Apollo tile');
 await insertCards('work.html', cards);
 console.log('Built ' + projects.length + ' drop-in project(s).');
