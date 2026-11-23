@@ -65,6 +65,29 @@ async function loadFolderProject() {
   }
 }
 
+function frameApolloPhotos(gallery, figures) {
+  const pairs = new Map([
+    ['05-concrete-column.jpg', '06-cantilever.jpg'],
+    ['09-brickwork-detail.jpg', '10-concrete-and-shadow.jpg'],
+  ]);
+  const filename = figure => figure?.querySelector('img').src.split('/').pop();
+  gallery.classList.add('apollo-gallery');
+
+  for (let index = 0; index < figures.length; index += 1) {
+    const frame = document.createElement('div');
+    frame.className = 'apollo-gallery-frame';
+    const figure = figures[index];
+    const next = figures[index + 1];
+    frame.appendChild(figure);
+    if (next && pairs.get(filename(figure)) === filename(next)) {
+      frame.classList.add('apollo-gallery-pair');
+      frame.appendChild(next);
+      index += 1;
+    }
+    gallery.appendChild(frame);
+  }
+}
+
 function enableProjectGallery() {
   const images = imagesElement;
   const figures = images.querySelectorAll('figure');
@@ -87,36 +110,40 @@ function enableProjectGallery() {
   alignProjectContent();
   images.tabIndex = 0;
   images.setAttribute('aria-label', 'Project images — scroll to explore');
-  // Leave the next image fully below the initial image viewport.
-  const firstFigure = figures[0];
-  function spaceNextImage() {
-    firstFigure.style.marginBottom = '0px';
-    if (!matchMedia('(min-width:821px)').matches) return;
-    const gap = parseFloat(getComputedStyle(images).rowGap) || 0;
-    const extra = Math.max(64, images.clientHeight - firstFigure.getBoundingClientRect().height - gap + 64);
-    firstFigure.style.marginBottom = `${extra}px`;
-  }
-  new ResizeObserver(spaceNextImage).observe(images);
-  firstFigure.querySelector('img').addEventListener('load', spaceNextImage);
-  window.addEventListener('resize', spaceNextImage);
-  spaceNextImage();
-  images.scrollTop = 0;
-  window.addEventListener('pageshow', () => { spaceNextImage(); images.scrollTop = 0; });
-  // Let the final image reach the text's top edge without scrolling past it.
-  function setImageScrollLimit() {
-    const last = figures[figures.length - 1];
-    if (!matchMedia('(min-width:821px)').matches) {
-      images.style.paddingBottom = '0px';
-      return;
+  if (folderProjectName === 'Apollo') {
+    frameApolloPhotos(images, Array.from(figures));
+  } else {
+    // Leave the next image fully below the initial image viewport.
+    const firstFigure = figures[0];
+    function spaceNextImage() {
+      firstFigure.style.marginBottom = '0px';
+      if (!matchMedia('(min-width:821px)').matches) return;
+      const gap = parseFloat(getComputedStyle(images).rowGap) || 0;
+      const extra = Math.max(64, images.clientHeight - firstFigure.getBoundingClientRect().height - gap + 64);
+      firstFigure.style.marginBottom = `${extra}px`;
     }
-    images.style.boxSizing = 'border-box';
-    images.style.paddingBottom = `${Math.max(0, images.clientHeight - last.getBoundingClientRect().height)}px`;
+    new ResizeObserver(spaceNextImage).observe(images);
+    firstFigure.querySelector('img').addEventListener('load', spaceNextImage);
+    window.addEventListener('resize', spaceNextImage);
+    spaceNextImage();
+    images.scrollTop = 0;
+    window.addEventListener('pageshow', () => { spaceNextImage(); images.scrollTop = 0; });
+    // Let the final image reach the text's top edge without scrolling past it.
+    function setImageScrollLimit() {
+      const last = figures[figures.length - 1];
+      if (!matchMedia('(min-width:821px)').matches) {
+        images.style.paddingBottom = '0px';
+        return;
+      }
+      images.style.boxSizing = 'border-box';
+      images.style.paddingBottom = `${Math.max(0, images.clientHeight - last.getBoundingClientRect().height)}px`;
+    }
+    new ResizeObserver(setImageScrollLimit).observe(images);
+    const imageSizeObserver = new ResizeObserver(setImageScrollLimit);
+    imageSizeObserver.observe(figures[figures.length - 1]);
+    window.addEventListener('resize', setImageScrollLimit);
+    setImageScrollLimit();
   }
-  new ResizeObserver(setImageScrollLimit).observe(images);
-  const imageSizeObserver = new ResizeObserver(setImageScrollLimit);
-  imageSizeObserver.observe(figures[figures.length - 1]);
-  window.addEventListener('resize', setImageScrollLimit);
-  setImageScrollLimit();
   const viewer = document.querySelector('.image-viewer');
   const enlargedImage = viewer.querySelector('img');
   images.addEventListener('click', event => {
