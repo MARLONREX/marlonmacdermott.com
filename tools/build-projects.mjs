@@ -6,7 +6,7 @@ const categories = new Map([
   ['Concepts', 'imaginary'],
   ['Photography', 'photography'],
   ['Newcastle University', 'uni'],
-  ['Weston University', 'weston'],
+  ['University Centre Weston', 'weston'],
 ]);
 const entities = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 const escapeHtml = value => value.replace(/[&<>"']/g, character => entities[character]);
@@ -26,7 +26,8 @@ async function readProject(directory) {
   }));
   const title = fields.get('Title');
   const year = fields.get('Year');
-  const category = fields.get('Category');
+  const configuredCategory = fields.get('Category');
+  const category = configuredCategory === 'Weston University' ? 'University Centre Weston' : configuredCategory;
   const coverFile = fields.get('Cover');
   const description = paragraphs.join('\n\n').trim();
   const photos = files.filter(file => file.isFile() && !file.name.startsWith('.') && imageExtension.test(file.name))
