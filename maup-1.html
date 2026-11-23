@@ -59,6 +59,27 @@
   width:100%; height:auto; aspect-ratio:1.46 / 1;
   object-fit:cover; object-position:50% 48%;
 }
+/* Square framing for the ceiling panel in the gallery and enlarged view. */
+.folder-project-images a.ceiling-panel,
+.image-viewer:has(img[src$="/20221213_172728.jpg"]) {
+  position:relative;
+  aspect-ratio:1;
+  overflow:hidden;
+  background:#f4f2ef;
+}
+.folder-project-images a.ceiling-panel { display:block; }
+.image-viewer:has(img[src$="/20221213_172728.jpg"]) { width:min(94vw,90dvh); }
+.folder-project-images a.ceiling-panel img,
+.image-viewer img[src$="/20221213_172728.jpg"] {
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:115%;
+  max-width:none;
+  max-height:none;
+  height:auto;
+  transform:translate(-51.4%,-46.2%) rotate(.9deg);
+}
 </style><link rel="stylesheet" href="page-transition.css?v=2">
 <link rel="stylesheet" href="mobile.css?v=1">
 </head>
@@ -73,7 +94,7 @@
     </header>
     <div class="folder-project-layout">
       <article class="folder-project-copy" style="white-space:normal"><p>The first year of my architectural education, introducing the fundamental principles of architectural design and representation. This period focused on developing an understanding of space, form, scale and the relationship between buildings and their surroundings. Projects provided opportunities to explore architectural drawing, model-making and conceptual design. The year established a foundation in communicating architectural ideas through visual and technical methods. It represents the beginning of my development as an architectural designer.</p></article>
-      <section class="folder-project-images" aria-label="Project images"><figure><a href="WorkPages/MAup%201/primaryimage/20230603_203058.jpg"><img src="WorkPages/MAup%201/primaryimage/20230603_203058.jpg" alt="MAup 1 — first-year architectural work"></a></figure><figure><a href="WorkPages/MAup%201/Image2/20221213_172810.jpg"><img src="WorkPages/MAup%201/Image2/20221213_172810.jpg" alt="Drawing of an arched window and moulding" loading="lazy"></a></figure><figure><a href="WorkPages/MAup%201/Image2/20230118_162247.jpg"><img src="WorkPages/MAup%201/Image2/20230118_162247.jpg" alt="Black-and-white photograph of an interior model with sunlight on the back wall" loading="lazy"></a></figure><figure><a href="WorkPages/MAup%201/Image2/20221213_172728.jpg"><img src="WorkPages/MAup%201/Image2/20221213_172728.jpg" alt="Decorative ceiling panel study with a circular centre" loading="lazy"></a></figure></section>
+      <section class="folder-project-images" aria-label="Project images"><figure><a href="WorkPages/MAup%201/primaryimage/20230603_203058.jpg"><img src="WorkPages/MAup%201/primaryimage/20230603_203058.jpg" alt="MAup 1 — first-year architectural work"></a></figure><figure><a href="WorkPages/MAup%201/Image2/20221213_172810.jpg"><img src="WorkPages/MAup%201/Image2/20221213_172810.jpg" alt="Drawing of an arched window and moulding" loading="lazy"></a></figure><figure><a href="WorkPages/MAup%201/Image2/20230118_162247.jpg"><img src="WorkPages/MAup%201/Image2/20230118_162247.jpg" alt="Black-and-white photograph of an interior model with sunlight on the back wall" loading="lazy"></a></figure><figure><a class="ceiling-panel" href="WorkPages/MAup%201/Image2/20221213_172728.jpg"><img src="WorkPages/MAup%201/Image2/20221213_172728.jpg" alt="Decorative ceiling panel study with a circular centre" loading="lazy"></a></figure></section>
     </div>
     
   </main>
