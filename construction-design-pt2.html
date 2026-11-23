@@ -17,7 +17,8 @@
   .project-menu { gap:22px; }
 }
 /* Shared title/copy column and a separate, quiet image scroll area. */
-.folder-project-header h1 { white-space:normal; font-size:clamp(52px,7vw,112px); line-height:1.05; }
+.folder-project-header { container-type:inline-size; }
+.folder-project-header h1[data-folder-title] { white-space:nowrap; font-size:min(112px,9.3cqi); line-height:1.05; }
 .folder-project-images { scrollbar-width:none; -ms-overflow-style:none; }
 .folder-project-images::-webkit-scrollbar { width:0; height:0; display:none; }
 @media(min-width:821px) {
